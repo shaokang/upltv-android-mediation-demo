@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId PROP_ISFOREIGN.toInteger() == 0 ? "adam.lean.inland" : "adam.lean.foreign"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled true
+
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a'
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('key.jks')
+            keyAlias 'key'
+            keyPassword '123456'
+            storePassword '123456'
+        }
+    }
+
+    buildTypes {
+        debug{
+            minifyEnabled false
+            manifestPlaceholders = [app_name: PROP_ISFOREIGN.toInteger() == 1?"广告demo_海外":"广告demo_国内"]
+            buildConfigField "boolean", "IS_FOREIGN", PROP_ISFOREIGN.toInteger() == 1 ? "true" : "false"
+        }
+        release {
+            manifestPlaceholders = [app_name: PROP_ISFOREIGN.toInteger() == 1?"广告demo_海外":"广告demo_国内"]
+            buildConfigField "boolean", "IS_FOREIGN", PROP_ISFOREIGN.toInteger() == 1 ? "true" : "false"
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs',PROP_ISFOREIGN.toInteger() == 0?'ads/domestic':'ads/foreign'
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'com.android.support:customtabs:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation(name: 'gson-2.7', ext: 'jar') // for vungle
+    implementation(name: 'glide-3.7.0', ext: 'jar')
+    implementation(name: 'UPAdsSdk_3.0.07.6', ext: 'aar')
+    implementation(name: 'android-gif-drawable', ext: 'aar')
+
+
+    if (PROP_ISFOREIGN.toInteger() == 0) {
+        //for toutiao
+        implementation(name: 'android-query-full.0.26.7', ext: 'jar')
+        implementation(name: 'baidu_ads', ext: 'aar')
+        implementation(name: 'gdt_ads', ext: 'aar')
+        implementation(name: 'mintegral_ads', ext: 'aar')
+        implementation(name: 'oneway_ads', ext: 'aar')
+        implementation(name: 'sigmob_ads', ext: 'aar')
+        implementation(name: 'toutiao_ads', ext: 'aar')
+        implementation(name: 'vungle_ads', ext: 'aar')
+    } else {
+        implementation(name: 'adcolony_ads', ext: 'aar')
+        implementation(name: 'applovin_ads', ext: 'aar')
+        implementation(name: 'chartboost_ads', ext: 'aar')
+        implementation(name: 'facebook_ads', ext: 'aar')
+        implementation(name: 'facebook_exo_player', ext: 'aar')
+        implementation(name: 'ironsource_ads', ext: 'aar')
+        implementation(name: 'play-services-ads-17.2.0', ext: 'aar')
+        implementation(name: 'play-services-ads-base-17.2.0', ext: 'aar')
+        implementation(name: 'play-services-ads-identifier-16.0.0', ext: 'aar')
+        implementation(name: 'play-services-ads-lite-17.2.0', ext: 'aar')
+        implementation(name: 'play-services-basement-16.0.1', ext: 'aar')
+        implementation(name: 'play-services-gass-17.2.0', ext: 'aar')
+        implementation(name: 'play-services-measurement-base-16.3.0', ext: 'aar')
+        implementation(name: 'play-services-measurement-sdk-api-16.3.0', ext: 'aar')
+        implementation(name: 'unity_ads', ext: 'aar')
+        implementation(name: 'vungle_ads', ext: 'aar')
+    }
+}
+
