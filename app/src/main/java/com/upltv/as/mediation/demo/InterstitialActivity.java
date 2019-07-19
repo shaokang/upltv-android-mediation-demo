@@ -1,4 +1,4 @@
-package com.up.adsdk.demo;
+package com.upltv.as.mediation.demo;
 
 import android.app.Activity;
 import android.os.Bundle;

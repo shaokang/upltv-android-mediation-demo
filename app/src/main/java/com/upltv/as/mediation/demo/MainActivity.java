@@ -1,4 +1,4 @@
-package com.up.adsdk.demo;
+package com.upltv.as.mediation.demo;
 
 import android.Manifest;
 import android.app.Activity;
@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.up.ads.UPAdsSdk;
-import com.up.ads.tool.AccessPrivacyInfoManager;
 
 public class MainActivity extends Activity {
     Button btnVideo;
@@ -97,7 +96,7 @@ public class MainActivity extends Activity {
     }
 
     private void initSDK(){
-        if(com.up.adsdk.demo.BuildConfig.IS_FOREIGN){
+        if(BuildConfig.IS_FOREIGN){
             UPAdsSdk.init(MainActivity.this, UPAdsSdk.UPAdsGlobalZone.UPAdsGlobalZoneForeign);
         }else {
             UPAdsSdk.init(MainActivity.this, UPAdsSdk.UPAdsGlobalZone.UPAdsGlobalZoneDomestic);
