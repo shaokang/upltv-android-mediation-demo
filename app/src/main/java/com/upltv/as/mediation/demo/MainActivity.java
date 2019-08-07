@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(!BuildConfig.IS_FOREIGN){
+        if (BuildConfig.globalzone == 1) {
             //gdt需要的权限
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
         }
 
 
-          //GDPR根据游戏需求确认是否调用。
+        //GDPR根据游戏需求确认是否调用。
 //        UPAdsSdk.isEuropeanUnionUser(this, new UPAdsSdk.UPEuropeanUnionUserCheckCallBack() {
 //            @Override
 //            public void isEuropeanUnionUser(boolean isEuropeanUnionUser) {
@@ -95,10 +95,10 @@ public class MainActivity extends Activity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    private void initSDK(){
-        if(BuildConfig.IS_FOREIGN){
+    private void initSDK() {
+        if (BuildConfig.globalzone == 0) {
             UPAdsSdk.init(MainActivity.this, UPAdsSdk.UPAdsGlobalZone.UPAdsGlobalZoneForeign);
-        }else {
+        } else {
             UPAdsSdk.init(MainActivity.this, UPAdsSdk.UPAdsGlobalZone.UPAdsGlobalZoneDomestic);
         }
     }
