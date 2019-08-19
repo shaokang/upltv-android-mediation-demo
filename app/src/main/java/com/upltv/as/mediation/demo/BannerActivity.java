@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import com.up.ads.UPAdsSdk;
 import com.up.ads.UPBannerAd;
 import com.up.ads.wrapper.banner.UPBannerAdListener;
+import com.up.ads.wrapper.banner.UPGameEasyBannerWrapper;
 
 public class BannerActivity extends Activity {
     private static final String TAG = "AdsSdk_demo";

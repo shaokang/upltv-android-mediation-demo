@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AdSdkDemo-Studio-Foreign.iml" filepath="$PROJECT_DIR$/AdSdkDemo-Studio-Foreign.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/upltv-android-mediation-demo.iml" filepath="$PROJECT_DIR$/upltv-android-mediation-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/upltv-android-sdk-demo.iml" filepath="$PROJECT_DIR$/upltv-android-sdk-demo.iml" />
     </modules>

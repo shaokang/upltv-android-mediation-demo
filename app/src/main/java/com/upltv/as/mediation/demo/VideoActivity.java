@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.up.ads.UPRewardVideoAd;
 import com.up.ads.wrapper.video.UPRewardVideoAdListener;
+import com.up.ads.wrapper.video.UPRewardVideoLoadCallback;
 
 public class VideoActivity extends Activity {
     private static final String TAG = "AdsSdk_demo";
@@ -41,6 +42,17 @@ public class VideoActivity extends Activity {
         coins = 0;
 
         mVideoAd = UPRewardVideoAd.getInstance(VideoActivity.this);
+        mVideoAd.load(new UPRewardVideoLoadCallback() {
+            @Override
+            public void onLoadFailed() {
+                Log.i(TAG,"onLoadFailed");
+            }
+
+            @Override
+            public void onLoadSuccessed() {
+                Log.i(TAG,"onLoadSuccessed");
+            }
+        });
         mVideoAd.setUpVideoAdListener(new UPRewardVideoAdListener() {
             @Override
             public void onVideoAdClicked() {

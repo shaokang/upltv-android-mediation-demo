@@ -5,7 +5,7 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId PROP_GLOBALZONE.toInteger() == 0 ? "adam.lean.foreign":"adam.lean.inland"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -56,16 +56,16 @@ dependencies {
     implementation 'com.android.support:support-annotations:28.0.0'
     implementation 'com.android.support:customtabs:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
-//    implementation 'com.android.support:multidex:1.0.1'
+    //    implementation 'com.android.support:multidex:1.0.1'
     implementation(name: 'gson-2.7', ext: 'jar') // for vungle
     implementation(name: 'glide-3.7.0', ext: 'jar')
-    implementation(name: 'UPAdsSdk_3.0.07.6', ext: 'aar')
-    implementation(name: 'android-gif-drawable', ext: 'aar')
+    implementation(name: 'UPAdsSdk_3.0.08.1', ext: 'aar')
 
 
     if (PROP_GLOBALZONE.toInteger() == 1) {
         //for toutiao
         implementation(name: 'android-query-full.0.26.7', ext: 'jar')
+        implementation(name: 'android-gif-drawable', ext: 'aar')//for toutiao
         implementation(name: 'baidu_ads', ext: 'aar')
         implementation(name: 'gdt_ads', ext: 'aar')
         implementation(name: 'mintegral_ads', ext: 'aar')
@@ -80,16 +80,11 @@ dependencies {
         implementation(name: 'facebook_ads', ext: 'aar')
         implementation(name: 'facebook_exo_player', ext: 'aar')
         implementation(name: 'ironsource_ads', ext: 'aar')
-        implementation(name: 'play-services-ads-17.2.0', ext: 'aar')
-        implementation(name: 'play-services-ads-base-17.2.0', ext: 'aar')
-        implementation(name: 'play-services-ads-identifier-16.0.0', ext: 'aar')
-        implementation(name: 'play-services-ads-lite-17.2.0', ext: 'aar')
-        implementation(name: 'play-services-basement-16.0.1', ext: 'aar')
-        implementation(name: 'play-services-gass-17.2.0', ext: 'aar')
-        implementation(name: 'play-services-measurement-base-16.3.0', ext: 'aar')
-        implementation(name: 'play-services-measurement-sdk-api-16.3.0', ext: 'aar')
         implementation(name: 'unity_ads', ext: 'aar')
         implementation(name: 'vungle_ads', ext: 'aar')
+        //for chartbost
+        implementation(name: 'eventbus-3.1.1', ext: 'jar')
+        implementation 'com.google.android.gms:play-services-ads:17.2.0'
     }
 }
 
