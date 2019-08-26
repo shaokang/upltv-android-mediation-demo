@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId PROP_GLOBALZONE.toInteger() == 0 ? "adam.lean.foreign":"adam.lean.inland"
+        applicationId "adam.lean.foreign"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -29,12 +29,10 @@ android {
     buildTypes {
         debug{
             minifyEnabled false
-            manifestPlaceholders = [app_name: PROP_GLOBALZONE.toInteger() == 0?"广告demo_海外":"广告demo_国内"]
-            buildConfigField 'int', 'globalzone', PROP_GLOBALZONE
+            manifestPlaceholders = [app_name: "广告demo_海外"]
         }
         release {
-            manifestPlaceholders = [app_name: PROP_GLOBALZONE.toInteger() == 0?"广告demo_海外":"广告demo_国内"]
-            buildConfigField 'int', 'globalzone', PROP_GLOBALZONE
+            manifestPlaceholders = [app_name: "广告demo_海外"]
             signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -44,7 +42,7 @@ android {
 
 repositories {
     flatDir {
-        dirs 'libs',PROP_GLOBALZONE.toInteger() == 1?'ads/domestic':'ads/foreign'
+        dirs 'libs','ads'
     }
 }
 
@@ -59,32 +57,19 @@ dependencies {
     //    implementation 'com.android.support:multidex:1.0.1'
     implementation(name: 'gson-2.7', ext: 'jar') // for vungle
     implementation(name: 'glide-3.7.0', ext: 'jar')
-    implementation(name: 'UPAdsSdk_3.0.08.1', ext: 'aar')
+    implementation(name: 'UPAdsSdk_3.0.08.2', ext: 'aar')
 
 
-    if (PROP_GLOBALZONE.toInteger() == 1) {
-        //for toutiao
-        implementation(name: 'android-query-full.0.26.7', ext: 'jar')
-        implementation(name: 'android-gif-drawable', ext: 'aar')//for toutiao
-        implementation(name: 'baidu_ads', ext: 'aar')
-        implementation(name: 'gdt_ads', ext: 'aar')
-        implementation(name: 'mintegral_ads', ext: 'aar')
-        implementation(name: 'oneway_ads', ext: 'aar')
-        implementation(name: 'sigmob_ads', ext: 'aar')
-        implementation(name: 'toutiao_ads', ext: 'aar')
-        implementation(name: 'vungle_ads', ext: 'aar')
-    } else if(PROP_GLOBALZONE.toInteger() == 0){
-        implementation(name: 'adcolony_ads', ext: 'aar')
-        implementation(name: 'applovin_ads', ext: 'aar')
-        implementation(name: 'chartboost_ads', ext: 'aar')
-        implementation(name: 'facebook_ads', ext: 'aar')
-        implementation(name: 'facebook_exo_player', ext: 'aar')
-        implementation(name: 'ironsource_ads', ext: 'aar')
-        implementation(name: 'unity_ads', ext: 'aar')
-        implementation(name: 'vungle_ads', ext: 'aar')
-        //for chartbost
-        implementation(name: 'eventbus-3.1.1', ext: 'jar')
-        implementation 'com.google.android.gms:play-services-ads:17.2.0'
-    }
+    implementation(name: 'adcolony_ads', ext: 'aar')
+    implementation(name: 'applovin_ads', ext: 'aar')
+    implementation(name: 'chartboost_ads', ext: 'aar')
+    implementation(name: 'facebook_ads', ext: 'aar')
+    implementation(name: 'facebook_exo_player', ext: 'aar')
+    implementation(name: 'ironsource_ads', ext: 'aar')
+    implementation(name: 'unity_ads', ext: 'aar')
+    implementation(name: 'vungle_ads', ext: 'aar')
+    //for chartbost
+    implementation(name: 'eventbus-3.1.1', ext: 'jar')
+    implementation 'com.google.android.gms:play-services-ads:17.2.0'
 }
 

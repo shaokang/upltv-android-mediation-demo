@@ -32,21 +32,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (BuildConfig.globalzone == 1) {
-            //gdt需要的权限
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                        || ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.REQUEST_INSTALL_PACKAGES) != PackageManager.PERMISSION_GRANTED
-                        || ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.REQUEST_INSTALL_PACKAGES, Manifest.permission.READ_PHONE_STATE}, 001);
-                }
-            }
-
-            String id = getAndroid(this.getApplicationContext());
-            UPAdsSdk.setCustomerId(id);//在UPAdsSdk.init()之前调用此方法
-            UPAdsSdk.setDebuggable(false);
-        }
-
 
         //GDPR根据游戏需求确认是否调用。
 //        UPAdsSdk.isEuropeanUnionUser(this, new UPAdsSdk.UPEuropeanUnionUserCheckCallBack() {
@@ -62,11 +47,7 @@ public class MainActivity extends Activity {
 //            }
 //        });
         isChild = findViewById(R.id.isChild);
-        if (BuildConfig.globalzone == 0) {
-            isChild.setVisibility(View.VISIBLE);
-        } else {
-            isChild.setVisibility(View.GONE);
-        }
+        isChild.setVisibility(View.VISIBLE);
 
         initSDK();
 
@@ -139,10 +120,6 @@ public class MainActivity extends Activity {
     }
 
     private void initSDK() {
-        if (BuildConfig.globalzone == 0) {
-            UPAdsSdk.init(MainActivity.this, UPAdsSdk.UPAdsGlobalZone.UPAdsGlobalZoneForeign);
-        } else {
-            UPAdsSdk.init(MainActivity.this, UPAdsSdk.UPAdsGlobalZone.UPAdsGlobalZoneDomestic);
-        }
+        UPAdsSdk.init(MainActivity.this, UPAdsSdk.UPAdsGlobalZone.UPAdsGlobalZoneForeign);
     }
 }
