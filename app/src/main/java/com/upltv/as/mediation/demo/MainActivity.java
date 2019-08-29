@@ -50,7 +50,6 @@ public class MainActivity extends Activity {
         isChild.setVisibility(View.VISIBLE);
 
         initSDK();
-
         isChild.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -114,10 +113,6 @@ public class MainActivity extends Activity {
         return androidId;
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
 
     private void initSDK() {
         UPAdsSdk.init(MainActivity.this, UPAdsSdk.UPAdsGlobalZone.UPAdsGlobalZoneForeign);
