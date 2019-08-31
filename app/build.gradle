@@ -57,7 +57,7 @@ dependencies {
     //    implementation 'com.android.support:multidex:1.0.1'
     implementation(name: 'gson-2.7', ext: 'jar') // for vungle
     implementation(name: 'glide-3.7.0', ext: 'jar')
-    implementation(name: 'UPAdsSdk_3008.2', ext: 'aar')
+    implementation(name: 'UPAdsSdk_3008.3', ext: 'aar')
 
 
     implementation(name: 'adcolony_ads', ext: 'aar')

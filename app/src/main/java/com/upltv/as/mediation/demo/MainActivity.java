@@ -50,6 +50,8 @@ public class MainActivity extends Activity {
         isChild.setVisibility(View.VISIBLE);
 
         initSDK();
+        //Input the date of the player’s birthday, to determine if the player is a child
+//        UPAdsSdk.setBirthday(2003,9);
         isChild.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
